@@ -32,11 +32,15 @@ waves of fog moving across board to blur vision
 
 Roadblocks:
 
-Figuring out how to get character to move.
-How to get AI's to behave, follow, or move randomly, to keep them from getting stuck or making the game unwinable
-CSS
-Keeping tokens from being collected twice/logging the spaces moved 
-How to keep high scores up locally
+-Figuring out how to get character to move.
+
+-How to get AI's to behave, follow, or move randomly, to keep them from getting stuck or making the game unwinable
+
+-CSS
+
+-Keeping tokens from being collected twice/logging the spaces moved 
+
+-How to keep high scores up locally
 
 
 
