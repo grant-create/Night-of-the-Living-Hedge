@@ -18,16 +18,24 @@ The player would be playing against the clock (and stretch goal, ai's)
 I plan on using HTML, CSS with Grid, and JavaScript, and Tailwind for styling (maybe)
 
 MVP:
+
 A maze game where the player needs to collect all tokens before the timer runs out to win the level with basic styling.
 
 Stretch Goals:
-AI enemies (that can move through obstacles?)
-Powerups
-multiple levels, that get harder.
-Randomized levels
-styling for blurred lines of movement
-High scores
-waves of fog moving across board to blur vision
+
+-AI enemies (that can move through obstacles?)
+
+-Powerups
+
+-Multiple levels, that get harder.
+
+-Randomized levels
+
+-Styling for blurred lines of movement
+
+-High scores
+
+-Waves of fog moving across board to blur vision
 
 
 Roadblocks:
