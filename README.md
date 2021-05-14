@@ -4,24 +4,25 @@
 For my first GA project I want to make a pac-man style game where the player has to run around a maze style board and collect tokens. I want to style it to look almost like Link from Legend of Zelda running around in the forest, and to add some difficulty I want to make the lines of the board less defined so you are running around in the forest without knowing where you can and cant walk.
 To make this work I imagine that I would need to make a very large grid with each tile numbered and tell the character that it can only move if the letter matches or if the number matches. and remove the barries from this list of movement options. All the available areas of movement will have a token on them, and when the character moves over them +1 will be added to a list, and the space will be updated and removed from the token list.
 
-  1  2  3  4  5  6  7  8  9  10
-a a1 a2 ..
-b b1 b2 ..
-c c1 c2 ..
-d d1 d2 ..
-e e1 e2 ..
-g g1 g2 ..
+
+![gridLayout](https://user-images.githubusercontent.com/63885329/118316351-9361ce80-b4ab-11eb-8847-2187e01d4130.jpg)
+
 
 
 The player would be playing against the clock (and stretch goal, ai's)
 
 I plan on using HTML, CSS with Grid, and JavaScript, and Tailwind for styling (maybe)
 
-MVP:
 
-A maze game where the player needs to collect all tokens before the timer runs out to win the level with basic styling.
 
-Stretch Goals:
+__MVP:__
+
+-A maze game where the player needs to collect all tokens before the timer runs out to win the level with basic styling.
+
+
+
+
+__Stretch Goals:__
 
 -AI enemies (that can move through obstacles?)
 
@@ -38,7 +39,10 @@ Stretch Goals:
 -Waves of fog moving across board to blur vision
 
 
-Roadblocks:
+
+
+
+__Roadblocks:__
 
 -Figuring out how to get character to move.
 
