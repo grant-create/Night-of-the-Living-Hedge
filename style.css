@@ -1,0 +1,36 @@
+
+
+.game-board{
+    display: grid;
+
+    /* 20 columns by 10 rows */
+    grid-template-columns:40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px  ; 
+    grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px  ; 
+    justify-content: center;
+    background-color: whitesmoke;
+    padding: 80px;
+
+}
+
+   .box{
+    background-color: green;
+
+    /* temporary margin */
+    margin: 1px;
+  }
+
+
+.wall{
+    background-color: darkgreen;
+}
+.box:hover {
+    background-color: skyblue;
+}
+.hero{
+    width: 35px;
+    height: 35px;
+    background-color: cadetblue;
+    position: absolute;
+    /* background: url() no-repeat; */
+    
+}
