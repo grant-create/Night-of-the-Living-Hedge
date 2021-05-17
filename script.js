@@ -3,7 +3,7 @@ console.log("Game")
 
 
 
-let gameOver = true
+
 
 
 
@@ -30,16 +30,6 @@ boardList = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
 
 
 
-
-
-
-
-
-
-
-
-
-
 window.addEventListener("DOMContentLoaded", () =>{
     const grid =document.querySelector(".game-board")
     let score = document.getElementById("score")
@@ -47,33 +37,53 @@ window.addEventListener("DOMContentLoaded", () =>{
 
     
     
+    // function endGameCheck() {
+    //     tiles = 0
+    //     for(boxid of boardList){
+    //         if(document.getElementById(`${boxid}`).innerText == "◽"){
+    //             console.log(document.getElementById(`${boxid}`).innerText)
+                
+    //         }else if(document.getElementById(`${boxid}`).innerText != "◽"){
+    //             tiles += 1
+    //             console.log(tiles)
+    //         }
+    //     }
+    // }
+    
+    
+
+
+
+
+
+
+    
     
     
     
     
     let startButton = document.getElementById("button")
-
+    let gameOver = true
+    let tiles = 0
     startButton.addEventListener("click", () =>{ 
         
         //on click goes through list and clears the board and messages, 
         //changes gameOver to false, and display player turn
+        if (gameOver == true){
+
+            heroSpot = 131
+            tiles = 0
+            score = 0
+            gameOver = false
+            
+            
+            
+            let tokens = 140 //140 non wall spaces on board, might need to do 139 since we start on a sq
+            
+
         
-        heroSpot = 131
-        score = 0
-        gameOver = false
-        
-        
-        let tokens = 140 //140 non wall spaces on board, might need to do 139 since we start on a sq
-        
-        
-        
-        
-        
-        
-        
-        
-        // starting pos of pac
-         
+            // starting pos of pac
+            
         
         let heroMove = document.getElementById(`${heroSpot}`) 
         
@@ -92,9 +102,9 @@ window.addEventListener("DOMContentLoaded", () =>{
             
             
             
-            heroMove.innerText = ""
-            
-            if (event.key == "ArrowUp"){
+                heroMove.innerText = ""
+                
+                if (event.key == "ArrowUp"){
                 
                     
                 //move up one sq
@@ -111,7 +121,7 @@ window.addEventListener("DOMContentLoaded", () =>{
                     
                     //put hero in new spot
                     heroMove.innerText = "🦔"
-                    
+                    endGameCheck()
                     
                     
                 }else if(event.key == "ArrowDown"){
@@ -119,6 +129,7 @@ window.addEventListener("DOMContentLoaded", () =>{
                     //move down one sq
                     heroSpot += 20
                     heroMove = document.getElementById(`${heroSpot}`)
+
                     //need to make it unable to go past 200 and stay off walls
                     if (heroSpot >200 || heroMove.className == "wall") {
                         console.log("blocked")
@@ -129,7 +140,7 @@ window.addEventListener("DOMContentLoaded", () =>{
                     
                     //put hero in new spot
                     heroMove.innerText = "🦔"
-                    
+                    endGameCheck()
                     
                     
                     
@@ -138,6 +149,7 @@ window.addEventListener("DOMContentLoaded", () =>{
                     //move left one sq
                     heroSpot -= 1
                     heroMove = document.getElementById(`${heroSpot}`)
+
                     //need to make it unable to go negative and stay off walls
                     
                     if (heroSpot <1 || heroMove.className == "wall") {
@@ -150,7 +162,7 @@ window.addEventListener("DOMContentLoaded", () =>{
                     
                     //put hero in new spot
                     heroMove.innerText = "🦔"
-                    
+                    endGameCheck()
                     
                     
                 }else if(event.key === "ArrowRight"){
@@ -167,33 +179,35 @@ window.addEventListener("DOMContentLoaded", () =>{
                     
                     heroMove = document.getElementById(`${heroSpot}`)
                     
-                    
                     //put hero in new spot 
                     
                     heroMove.innerText = "🦔"
-                } 
+                    endGameCheck()
+
+                } //ArrowRight
                 
-        })      
-        
-    })
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+            })  //Set of arrow key if statements    
             
+        } //Start button IF statement
+    }) //Start Button event Listener
+        
+    
+        
+        
+    
+        
+        
+        
+    
+        
+    
             
 
-        
+    
 
 
-
-})           
+    
+})    //DOMContentLoaded       
 
 
 
