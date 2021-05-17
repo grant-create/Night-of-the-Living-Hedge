@@ -1,4 +1,4 @@
-console.log("Here we go")
+console.log("Game")
 
 
 
@@ -22,124 +22,178 @@ boardList = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 window.addEventListener("DOMContentLoaded", () =>{
     const grid =document.querySelector(".game-board")
-    const score = document.getElementById("score")
-    const width = 20 //board is 20 sq long by 10 sq high
+    let score = document.getElementById("score")
+    let heroSpot = 130
+
+    let startButton = document.getElementById("button")
+    
+
+    // startButton.addEventListener("click", () =>{ 
+        
+    //     //on click goes through list and clears the board and messages, 
+    //     //changes gameOver to false, and display player turn
+        
+    //     heroSpot = 131
+    //     score = 0
+    //     gameOver = false
+    //     heroMove.innerText = "🦔"
+        
+        
+    // })
 
 
-    // while(gameOver = false){
 
-    // }
 
+
+   
     
 
     // starting pos of pac
-    let heroSpot = 110
+    
+
     let heroMove = document.getElementById(`${heroSpot}`)
-    heroMove.innerText = "🎃"
-    console.log(heroSpot)
+    
+    //add this to start game function
+    heroMove.innerText = "🦔"
+    
+    
+    
     // for (i=0; i<boardList.length; i++){
     //     console.log(i)
         
+
+
+
+
+
         document.addEventListener("keydown", (event) => {
-            console.log(heroSpot)
-            console.log(event.key)
-            heroMove.innerText = ""
-            heroMove = document.getElementById(`${heroSpot}`)
+
+            
+           
+                heroMove.innerText = ""
+                
+                if (event.key == "ArrowUp"){
+                    
+                    
+                    //move up one sq
+                    heroSpot -= 20
+                    heroMove = document.getElementById(`${heroSpot}`)
+                    
+                //need to make it unable to go negative and stay off walls
+                
+                if (heroSpot <1 || heroMove.className === "wall") {
+                    console.log("blocked")
+                    heroSpot+=20
+                    }  
+                    heroMove = document.getElementById(`${heroSpot}`)
+                    
+                    //put hero in new spot
+                    heroMove.innerText = "🦔"
+                    
+                    
+                    
+                }else if(event.key == "ArrowDown"){
+
+                    //move down one sq
+                    heroSpot += 20
+                    heroMove = document.getElementById(`${heroSpot}`)
+                    //need to make it unable to go past 200 and stay off walls
+                    if (heroSpot >200 || heroMove.className == "wall") {
+                        console.log("blocked")
+                        heroSpot-=20
+                    }
+                    heroMove = document.getElementById(`${heroSpot}`)
+                    
+                    
+                    //put hero in new spot
+                    heroMove.innerText = "🦔"
+                    
+                    
+
+                
+                }else if(event.key == "ArrowLeft"){
+
+                    //move left one sq
+                    heroSpot -= 1
+                    heroMove = document.getElementById(`${heroSpot}`)
+                    //need to make it unable to go negative and stay off walls
+                    
+                    if (heroSpot <1 || heroMove.className == "wall") {
+                        console.log("blocked")
+                        heroSpot+=1
+                    }
+                    heroMove = document.getElementById(`${heroSpot}`)
+                    
+                    
+                    
+                    //put hero in new spot
+                    heroMove.innerText = "🦔"
+                    
+                    
+                    
+                }else if(event.key === "ArrowRight"){
+                    
+                    //move right one sq
+                    heroSpot += 1
+                    heroMove = document.getElementById(`${heroSpot}`)
+
+                    //need to make it unable to go past 200 and stay off walls
+                    if (heroSpot >200 || heroMove.className == "wall") {
+                        console.log("blocked")
+                        heroSpot-=1
+                    }
+
+                    heroMove = document.getElementById(`${heroSpot}`)
+                    
+                    
+                    //put hero in new spot 
+                    
+                    heroMove.innerText = "🦔"
+            } 
+            
+        })      
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+    
             
             
 
-
-
-
-            if (event.key == "ArrowUp"){
-                console.log(heroSpot)
-                
-
-                
-                //change old spot back to normal
-                heroMove.innerText = ""
-                
-                //move up one sq
-                heroSpot -= 20 
-
-                //need to make it unable to go negative
-
-                //put hero in new spot
-                heroMove.innerText = "🎃"
-                heroMove
-                
-            }else if(event.key == "ArrowDown"){
-                //change old spot back to normal
-                heroMove.innerText = ""
-
-                //move down one sq
-                heroSpot += 20
-                
-                //need to make it unable to go negative
-
-                //put hero in new spot
-                heroMove.innerText = "🎃"
-                
-            }else if(event.key == "ArrowLeft"){
-                //change old spot back to normal
-                heroMove.innerText = ""
-
-                //move left one sq
-                heroSpot -= 1
-                
-                //need to make it unable to go negative
-
-                //put hero in new spot
-                heroMove.innerText = "🎃"
-                
-            }else if(event.key === "ArrowRight"){
-                //change old spot back to normal
-                heroMove.innerText = ""
-
-                //move right one sq
-                heroSpot += 1
-                
-                //need to make it unable to go negative
-
-                //put hero in new spot
-                heroMove.innerText = "🎃"
-                
-                
-            }
-        })
-    //}   
-
-
-
         
 
-    
+
+
+})           
 
 
 
-
-    
-    let startButton = document.querySelector(".button")
-    
-    startButton.addEventListener("click", () =>{
-
-        //on click goes through list and clears the board and messages, 
-        //changes gameOver to false, and display player turn
-
-
-
-            gameOver = false
-
-
-        
-    })
-
-
-
-
-})
 
 
 
