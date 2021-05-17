@@ -45,65 +45,67 @@ window.addEventListener("DOMContentLoaded", () =>{
     let score = document.getElementById("score")
     let heroSpot = 130
 
+    
+    
+    
+    
+    
+    
     let startButton = document.getElementById("button")
-    
 
-    // startButton.addEventListener("click", () =>{ 
+    startButton.addEventListener("click", () =>{ 
         
-    //     //on click goes through list and clears the board and messages, 
-    //     //changes gameOver to false, and display player turn
+        //on click goes through list and clears the board and messages, 
+        //changes gameOver to false, and display player turn
         
-    //     heroSpot = 131
-    //     score = 0
-    //     gameOver = false
-    //     heroMove.innerText = "🦔"
+        heroSpot = 131
+        score = 0
+        gameOver = false
         
         
-    // })
-
-
-
-
-
-   
-    
-
-    // starting pos of pac
-    
-
-    let heroMove = document.getElementById(`${heroSpot}`)
-    
-    //add this to start game function
-    heroMove.innerText = "🦔"
-    
-    
-    
-    // for (i=0; i<boardList.length; i++){
-    //     console.log(i)
+        let tokens = 140 //140 non wall spaces on board, might need to do 139 since we start on a sq
         
-
-
-
-
-
+        
+        
+        
+        
+        
+        
+        
+        // starting pos of pac
+         
+        
+        let heroMove = document.getElementById(`${heroSpot}`) 
+        
+        //add this to start game function
+        heroMove.innerText = "🦔"
+        
+        
+        
+        
+        
+        
+        
+        
+        
         document.addEventListener("keydown", (event) => {
-
             
-           
-                heroMove.innerText = ""
+            
+            
+            heroMove.innerText = ""
+            
+            if (event.key == "ArrowUp"){
                 
-                if (event.key == "ArrowUp"){
                     
-                    
-                    //move up one sq
+                //move up one sq
                     heroSpot -= 20
                     heroMove = document.getElementById(`${heroSpot}`)
                     
-                //need to make it unable to go negative and stay off walls
-                
-                if (heroSpot <1 || heroMove.className === "wall") {
-                    console.log("blocked")
-                    heroSpot+=20
+                    //need to make it unable to go negative and stay off walls
+                    
+                    if (heroSpot <1 || heroMove.className === "wall") {
+                        console.log("blocked")
+                        heroSpot+=20
                     }  
                     heroMove = document.getElementById(`${heroSpot}`)
                     
@@ -113,7 +115,7 @@ window.addEventListener("DOMContentLoaded", () =>{
                     
                     
                 }else if(event.key == "ArrowDown"){
-
+                    
                     //move down one sq
                     heroSpot += 20
                     heroMove = document.getElementById(`${heroSpot}`)
@@ -129,10 +131,10 @@ window.addEventListener("DOMContentLoaded", () =>{
                     heroMove.innerText = "🦔"
                     
                     
-
-                
+                    
+                    
                 }else if(event.key == "ArrowLeft"){
-
+                    
                     //move left one sq
                     heroSpot -= 1
                     heroMove = document.getElementById(`${heroSpot}`)
@@ -156,33 +158,34 @@ window.addEventListener("DOMContentLoaded", () =>{
                     //move right one sq
                     heroSpot += 1
                     heroMove = document.getElementById(`${heroSpot}`)
-
+                    
                     //need to make it unable to go past 200 and stay off walls
                     if (heroSpot >200 || heroMove.className == "wall") {
                         console.log("blocked")
                         heroSpot-=1
                     }
-
+                    
                     heroMove = document.getElementById(`${heroSpot}`)
                     
                     
                     //put hero in new spot 
                     
                     heroMove.innerText = "🦔"
-            } 
-            
+                } 
+                
         })      
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-    
+        
+    })
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
             
             
 
