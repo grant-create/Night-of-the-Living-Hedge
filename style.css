@@ -24,9 +24,9 @@
 .wall{
     background-color: darkgreen;
 }
-.box:hover {
-    background-color: skyblue;
-}
+/* .box:hover {
+    background-color: skyblue; 
+} */
 .hero{
     width: 35px;
     height: 35px;
