@@ -17,41 +17,51 @@ window.addEventListener("DOMContentLoaded", () =>{
     let  blinkySpot = 91
     let  pinkySpot = 110
     let  clydeSpot = 111
+    let dotsEaten = []
     let tileSteps = []
     let win = false
+    let highscoredisp = 0
+    document.getElementById("highscore").innerText = "High Score: "+ highscoredisp
+
+    //objects attempt for straighter movement
+    // let inky = {spot:90, x:""}
+    // let blinky = {spot:91, x:""}
+    // let pinky = {spot:110, x:""}
+    // let clyde = {spot:111, x:""}
+
+    
+    
+   
+    //update high score
+
+    function newHS(){
+        if(scoreNum>highscoredisp){
+            console.log("in hs func")
+            
+            console.log(scoreNum, highscoredisp)
+            document.getElementById("highscore").innerText = `High Score: ${highscoredisp}`
+        }
+    }
+    
 
 
-
-
-
-boardList = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-              21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-              41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 
-              61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 
-              81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 
-             101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120,
-             121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140,
-             141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 
-             161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 
-             181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200]
 
 
 
 function winCheck(){
-    if (tileCount==1){
+    if (dotsEaten.size==140){
+        console.log(dotsEaten.size)
         gameOver = true
-        document.getElementById("big-message").innerText = "You Won, Nice!"
-        console.log(showTimer)
+        document.getElementById("big-message").innerText = "You Won!"
+        newHS()
         win = true
-
+        
         
 
-    }
+     } //console.log(dotsEaten.size)
 }
 
 
-
-    
 
     startButton.addEventListener("click", () =>{ 
         
@@ -64,7 +74,7 @@ function winCheck(){
 
             //reset the board
             heroSpot = 130
-            tileSteps = [130]
+            tileSteps = []
             document.getElementById("big-message").innerText = ""
             heroMove = document.getElementById(`${heroSpot}`)
             heroMove.innerText = "🦔"
@@ -73,22 +83,22 @@ function winCheck(){
             gameOver = false
             
             scoreNum = 1
-            
+            dotsEaten = []
             tileCount = 140
             playerMoves = 0
             showTimer = 90
             boxes = document.querySelectorAll(".box")
-            startButton = document.getElementById("button")
+            // startButton = document.getElementById("button")
             inkySpot = 90
             blinkySpot = 91
             pinkySpot = 110
             clydeSpot = 111
-
+            win = false
             
-          
             
-
-
+            
+            
+            
  
 
             // Timer 
@@ -98,41 +108,57 @@ function winCheck(){
             function tick(){
                 showTimer--
                 document.getElementById("timer").innerText = `Timer: ${showTimer}`
-                
-                if(showTimer<87){
+                winCheck()
+                newHS()
+                if(showTimer<88){
 
                     inkySpot = ghostMovement(inkySpot)
                     blinkySpot = ghostMovement(blinkySpot)
                     pinkySpot = ghostMovement(pinkySpot)
                     clydeSpot = ghostMovement(clydeSpot)
+
+                    //objects attempt for straighter movement
+                    // ghostMovement(inky.Spot)
+                    // ghostMovement(blinky.Spot)
+                    // ghostMovement(pinky.Spot)
+                    // ghostMovement(clyde.Spot)
                 }
-                if(showTimer<85){
+                if(showTimer<86){
                     document.getElementById(`90`).innerText = ""
                     document.getElementById(`91`).innerText = ""
                     document.getElementById(`110`).innerText = ""
                     document.getElementById(`111`).innerText = ""
+                    
+                }
+                if(showTimer%10 == 0 && showTimer<60){
+                    
+                    bonusItem()
+                    
+                    
+
                 }
                 
                 winCheck()
-            
+                // if you win:
                 if(win == true){
                     clearInterval(clock)
                     scoreNum += showTimer
                     document.getElementById("score").innerText = `Score: ${scoreNum}`
                     document.getElementById("big-message").innerText = "You Won!!!!!"
+                    newHS()
 
 
-                    
+                // if you die
                 }else if(gameOver == true){
                     clearInterval(clock)
                     scoreNum += showTimer
                     document.getElementById("score").innerText = `Score: ${scoreNum}`
                     document.getElementById("big-message").innerText = "You died!"
-
+                    newHS()
                 
-                
-            }else if(showTimer <= 0){
-                    
+                // if you run out of time
+                }else if(showTimer <= 0){
+                        newHS()
                         document.getElementById("big-message").innerText = "Game Over"
                         gameOver = true
                         clearInterval(clock)
@@ -152,7 +178,7 @@ function winCheck(){
 
 
         // arrow key functions:
-
+    
         document.addEventListener("keydown", (event) => {
 
             //clear the old spot
@@ -170,6 +196,7 @@ function winCheck(){
                 //move up one sq
                     heroSpot -= 20
                     
+                    
                     heroMove = document.getElementById(`${heroSpot}`)
                     
                     //need to make it unable to go negative and stay off walls
@@ -178,7 +205,7 @@ function winCheck(){
                         
                         heroSpot+=20
                         heroMove = document.getElementById(`${heroSpot}`)
-                    }  
+                    } 
                     
                     //put hero in new spot
                    
@@ -188,9 +215,15 @@ function winCheck(){
                 }else if(event.key == "ArrowDown"){
                     
                     //move down one sq
+                    // heroMove.innerText.transform = "translate(0px, 20px)"
                     heroSpot += 20
                     
+                
+                    // console.log(heroSpot)
+
                     heroMove = document.getElementById(`${heroSpot}`)
+
+                    
 
                     //need to make it unable to go past 200 and stay off walls
                     if (heroSpot >200 || heroMove.className == "wall") {
@@ -263,8 +296,13 @@ function winCheck(){
                          
                          
                          
-                        }
+                    }else if(heroMove.innerText === "🎈"){
+                        scoreNum += 25
+                         
+                         
+                        document.getElementById("score").innerText = `Score: ${scoreNum}`
                     }
+                }
                 tileSteps.push(heroSpot)
                 dotsEaten = new Set(tileSteps)
                 // console.log(dotsEaten)
@@ -272,25 +310,26 @@ function winCheck(){
                 winCheck()
 
 
-
-            })  //Set of arrow key if statements    
+            // console.log(tileCount)
+        })  //Set of arrow key if statements    
             
     
-            //loop to make all zombie steps back into dots
-            // while(gameOver==false){
+            // for bonus items:
+            function bonusItem(){
+                
+                rando = Math.floor(Math.random() * tileSteps.length)
+                
+                randoInTiles = tileSteps[rando]
+                
+                if(document.getElementById(`${randoInTiles}`).innerText == "" ){
+                    document.getElementById(`${randoInTiles}`).innerText =  "🎈"
+                    
+                }
+                
+            }
 
-                for(box of boxes){
-                    // console.log(box)
-                    if(tileSteps.includes(box)){
-                        console.log(box)
-                        box.innerText = ""
-                    }else{
-                        box.innerText = "◽"
-                    }
-                }  
-            // }
 
-        
+     
     
         
         
@@ -305,7 +344,18 @@ function winCheck(){
         pinkyMove.innerText = "👤"
         clydeMove = document.getElementById(`${clydeSpot}`)
         clydeMove.innerText = "👤"
-        
+
+
+        //objects attempt for straighter movement
+        // inkyMove = document.getElementById(`${inky.Spot}`)
+        // inkyMove.innerText = "👤"
+        // console.log(inkyMove.innerText)
+        // blinkyMove = document.getElementById(`${blinky.Spot}`)
+        // blinkyMove.innerText = "👤"
+        // pinkyMove = document.getElementById(`${pinky.Spot}`)
+        // pinkyMove.innerText = "👤"
+        // clydeMove = document.getElementById(`${clyde.Spot}`)
+        // clydeMove.innerText = "👤"
       
         
 
@@ -316,11 +366,12 @@ function winCheck(){
 
             //have them move in random directions
             //get random direction, then move
-            x = Math.floor(Math.random() * 4)
+            // let dir = false
+            let x = Math.floor(Math.random() * 4) 
 
             
             // console.log(x)
-            console.log(ghost)
+            // console.log(ghost)
             // console.log(tiles)
             // console.log(document.getElementById(`${ghost}`).id)
 
@@ -335,15 +386,15 @@ function winCheck(){
             //want the ghosts to keep moving in their random direction until they hit a wall or edge
             // while (gameOver == false){
 
-                
+           
                 if (x == 0){
                     //move up one sq
 
                     ghost -= 20
 
                     
-
-
+                    
+                    
                     // Want to keep the space the way it was before ghost stepped on it
                     
                     
@@ -352,14 +403,14 @@ function winCheck(){
                     
                     //need to make it unable to go negative and stay off walls
                     
-                    if (ghost <1 || document.getElementById(`${ghost}`).className === "wall") {
-                        
+                    if (ghost <1 || document.getElementById(`${ghost}`).className === "wall"|| document.getElementById(`${ghost}`).innerText == "👤") {
+                        dir = false
                         ghost+=20
                         
                         document.getElementById(`${ghost}`)
                     }  else if(document.getElementById(`${ghost}`).innerText == "🦔"){
                         gameOver = true
-                    
+                        
                     }
                     
                     
@@ -371,8 +422,8 @@ function winCheck(){
                     
                     //need to make it unable to go negative and stay off walls
                     
-                    if (ghost >200 || document.getElementById(`${ghost}`).className === "wall") {
-                    
+                    if (ghost >200 || document.getElementById(`${ghost}`).className === "wall" || document.getElementById(`${ghost}`).innerText == "👤") {
+                        dir = false
                         ghost-=20
                         
                         document.getElementById(`${ghost}`)
@@ -388,16 +439,16 @@ function winCheck(){
                     
                     //need to make it unable to go negative and stay off walls
                     
-                    if (ghost <1 || document.getElementById(`${ghost}`).className === "wall") {
-                        
+                    if (ghost <1 || document.getElementById(`${ghost}`).className === "wall"|| document.getElementById(`${ghost}`).innerText == "👤") {
+                        dir=false
                         ghost+=1
                         
                         document.getElementById(`${ghost}`)
                     }  else if(document.getElementById(`${ghost}`).innerText == "🦔"){
                         gameOver = true
                     }
-                
-                
+                    
+                    
                 }else if(x==3){
                     //move down one sq
                     ghost += 1
@@ -406,8 +457,8 @@ function winCheck(){
                     
                     //need to make it unable to go negative and stay off walls
                     
-                    if (ghost >200 || document.getElementById(`${ghost}`).className === "wall") {
-                        
+                    if (ghost >200 || document.getElementById(`${ghost}`).className === "wall"|| document.getElementById(`${ghost}`).innerText == "👤") {
+                        dir = false
                         ghost-=1
                         
                         document.getElementById(`${ghost}`)
@@ -416,19 +467,29 @@ function winCheck(){
                     }
                 }
         
-            
+                
         
+                
+                
+                document.getElementById(`${ghost}`).innerText = "👤"
+                return ghost
             
-
-        document.getElementById(`${ghost}`).innerText = "👤"
-        return ghost
     }//end of ghost movement func 
     
-        
     
-           
+    
+    
+    //change to night mode
 
+    nightButton = document.getElementById("night-mode")
+    standardButton = document.getElementById("standard")
 
+    nightButton.addEventListener("click", () =>{
+        document.querySelector(".container").style.alignItems ="center"
+    })
+    standardButton.addEventListener("click", () =>{
+        document.querySelector(".container").style.alignItems =""
+    })
     
 
 

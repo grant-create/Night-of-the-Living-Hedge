@@ -1,4 +1,8 @@
 
+body{
+    background-color: rgb(49, 47, 47);
+    color: darkseagreen;
+}
 
 .game-board{
     display: grid;
@@ -7,15 +11,18 @@
     grid-template-columns:40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px  ; 
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px  ; 
     justify-content: center;
-    background-color: whitesmoke;
-    padding: 80px;
+    background-color: black;
+    padding: 20px 20px 20px 20px;
     text-align: center;
+    
+    
 
 }
 
+
    .box{
     background-color: green;
-
+    
     /* temporary margin */
     /* margin: 1px; */
   }
@@ -23,10 +30,9 @@
 
 .wall{
     background-color: darkgreen;
+    /* border-radius: 25px; */
 }
-/* .box:hover {
-    background-color: skyblue; 
-} */
+
 .hero{
     width: 35px;
     height: 35px;
@@ -34,4 +40,33 @@
     position: absolute;
     /* background: url() no-repeat; */
 
+}
+.button{
+    display: grid;
+    margin: 0 auto;
+    background-color: darkorchid;
+    color: darkseagreen;
+    font-size: 20px;
+    vertical-align: center;
+    border-radius: 20px;
+    
+    
+     width: 500px;
+     height: 40px;
+    padding: 5px; 
+}
+.button:hover{
+    background-color: cadetblue; 
+}
+.container{
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    font-size: 20px;
+    /* align-items: center; */
+}
+#highscore{
+    padding-right: 150px;
+    display: grid;
+    justify-content: center;
 }
