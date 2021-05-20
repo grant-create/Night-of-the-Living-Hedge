@@ -103,7 +103,7 @@ function winCheck(){
             pinkyMove.innerText = "👤"
             clydeMove = document.getElementById(`${clydeSpot}`)
             clydeMove.innerText = "👤"
-            
+            document.addEventListener("keydown", moveHedgeHog)
             
             
             
@@ -161,11 +161,17 @@ function winCheck(){
                 }else if(gameOver == true){
                     clearInterval(clock)
                     scoreNum += showTimer
+
                     document.getElementById("score").innerText = `Score: ${scoreNum}`
                     document.getElementById("big-message").innerText = "You died!"
+                    document.getElementById("big-message").style.color = "red"
                     document.getElementById(`${heroSpot}`).style.backgroundColor ="red"
                     newHS()
                 
+                    document.removeEventListener("keydown", moveHedgeHog)
+
+
+
                 // if you run out of time
                 }else if(showTimer <= 0){
                         newHS()
@@ -173,33 +179,39 @@ function winCheck(){
                         gameOver = true
                         clearInterval(clock)
                 }
-            }
+            }//end of tick function
 
            
 
-
+            return gameOver
+            console.log(gameOver)
         } //Start button IF statement
     }) //Start Button event Listener
 
             
+        
             
-            
+
+
     
+        console.log(gameOver)
+        // if(gameOver == false){
 
 
         // arrow key functions:
     
-        document.addEventListener("keydown", (event) => {
+
+        function moveHedgeHog(event) {
             event.preventDefault();
             //clear the old spot
             heroMove.innerText = ""
-            
+            console.log(gameOver)
             //log move count
             playerMoves ++
             // console.log(playerMoves)
                 
 
-
+            
                 if (event.key == "ArrowUp"){
                 
                     
@@ -288,8 +300,8 @@ function winCheck(){
                     }
                     
                     
-                    
-                    
+                    //add right facing hedgehog?
+                    // heroMove.innerText = url(hedgehog.png)
     
                     
                 } //ArrowRight
@@ -322,9 +334,14 @@ function winCheck(){
 
 
             // console.log(tileCount)
-        })  //Set of arrow key if statements    
+        
+          //Set of arrow key if statements    
             
-    
+        }
+ document.addEventListener("keydown", moveHedgeHog)
+
+
+
             // for bonus items:
             function bonusItem(){
                 
