@@ -36,9 +36,9 @@ window.addEventListener("DOMContentLoaded", () =>{
 
     function newHS(){
         if(scoreNum>highscoredisp){
-            console.log("in hs func")
+            
             highscoredisp = scoreNum
-            console.log(scoreNum, highscoredisp)
+            
             document.getElementById("highscore").innerText = `High Score: ${highscoredisp}`
         }
     }
@@ -69,6 +69,7 @@ function winCheck(){
         //changes gameOver to false, and display player turn
         boxes.forEach(function(box) {
             box.innerText = "◽"
+            box.style.backgroundColor ="green"
         })
         if (gameOver == true){
 
@@ -162,6 +163,7 @@ function winCheck(){
                     scoreNum += showTimer
                     document.getElementById("score").innerText = `Score: ${scoreNum}`
                     document.getElementById("big-message").innerText = "You died!"
+                    document.getElementById(`${heroSpot}`).style.backgroundColor ="red"
                     newHS()
                 
                 // if you run out of time
@@ -284,6 +286,7 @@ function winCheck(){
                         heroSpot-=1
                         heroMove = document.getElementById(`${heroSpot}`)
                     }
+                    
                     
                     
                     
