@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", () =>{
     function newHS(){
         if(scoreNum>highscoredisp){
             console.log("in hs func")
-            
+            highscoredisp = scoreNum
             console.log(scoreNum, highscoredisp)
             document.getElementById("highscore").innerText = `High Score: ${highscoredisp}`
         }
@@ -94,6 +94,14 @@ function winCheck(){
             pinkySpot = 110
             clydeSpot = 111
             win = false
+            inkyMove = document.getElementById(`${inkySpot}`)
+            inkyMove.innerText = "👤"
+            blinkyMove = document.getElementById(`${blinkySpot}`)
+            blinkyMove.innerText = "👤"
+            pinkyMove = document.getElementById(`${pinkySpot}`)
+            pinkyMove.innerText = "👤"
+            clydeMove = document.getElementById(`${clydeSpot}`)
+            clydeMove.innerText = "👤"
             
             
             
