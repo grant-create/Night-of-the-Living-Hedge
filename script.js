@@ -188,7 +188,7 @@ function winCheck(){
         // arrow key functions:
     
         document.addEventListener("keydown", (event) => {
-
+            event.preventDefault();
             //clear the old spot
             heroMove.innerText = ""
             
@@ -493,6 +493,7 @@ function winCheck(){
     standardButton = document.getElementById("standard")
 
     nightButton.addEventListener("click", () =>{
+        console.log("here")
         document.querySelector(".container").style.alignItems ="center"
     })
     standardButton.addEventListener("click", () =>{
