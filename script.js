@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () =>{
 
 
 
-
+// check to see if player has won
 
 function winCheck(){
     if (dotsEaten.size==140){
@@ -61,7 +61,7 @@ function winCheck(){
      } //console.log(dotsEaten.size)
 }
 
-
+// start/restart button, resets all variables except high score, and starts timer
 
     startButton.addEventListener("click", () =>{ 
         
@@ -112,6 +112,7 @@ function winCheck(){
 
             // Timer 
 
+
             let clock = setInterval(tick, 1000)
 
             function tick(){
@@ -119,8 +120,10 @@ function winCheck(){
                 document.getElementById("timer").innerText = `Timer: ${showTimer}`
                 winCheck()
                 newHS()
-                if(showTimer<88){
 
+                //adds slight delay for releasing the zombies
+                if(showTimer<88){
+                    
                     inkySpot = ghostMovement(inkySpot)
                     blinkySpot = ghostMovement(blinkySpot)
                     pinkySpot = ghostMovement(pinkySpot)
@@ -132,6 +135,8 @@ function winCheck(){
                     // ghostMovement(pinky.Spot)
                     // ghostMovement(clyde.Spot)
                 }
+
+                //not sure why but zombie wall has dots, this is to fix that
                 if(showTimer<86){
                     document.getElementById(`90`).innerText = ""
                     document.getElementById(`91`).innerText = ""
@@ -139,6 +144,9 @@ function winCheck(){
                     document.getElementById(`111`).innerText = ""
                     
                 }
+
+                //after 30 seconds bonus items start to appear every 10 seconds
+
                 if(showTimer%10 == 0 && showTimer<60){
                     
                     bonusItem()
@@ -151,7 +159,10 @@ function winCheck(){
                 // if you win:
                 if(win == true){
                     clearInterval(clock)
+
+                    //add remaining time to score
                     scoreNum += showTimer
+                    //update score and text
                     document.getElementById("score").innerText = `Score: ${scoreNum}`
                     document.getElementById("big-message").innerText = "You Won!"
                     newHS()
@@ -165,6 +176,7 @@ function winCheck(){
                     document.getElementById("score").innerText = `Score: ${scoreNum}`
                     document.getElementById("big-message").innerText = "You died!"
                     document.getElementById("big-message").style.color = "red"
+                    //change color of where you died to red
                     document.getElementById(`${heroSpot}`).style.backgroundColor ="red"
                     newHS()
                 
@@ -175,7 +187,7 @@ function winCheck(){
                 // if you run out of time
                 }else if(showTimer <= 0){
                         newHS()
-                        document.getElementById("big-message").innerText = "Game Over"
+                        document.getElementById("big-message").innerText = "Game Over, Time's Up"
                         gameOver = true
                         clearInterval(clock)
                 }
@@ -183,8 +195,9 @@ function winCheck(){
 
            
 
-            return gameOver
-            console.log(gameOver)
+            // return gameOver
+            // console.log(gameOver)
+
         } //Start button IF statement
     }) //Start Button event Listener
 
@@ -326,6 +339,8 @@ function winCheck(){
                         document.getElementById("score").innerText = `Score: ${scoreNum}`
                     }
                 }
+                tileSteps.push(130)
+                // console.log(tileSteps) 
                 tileSteps.push(heroSpot)
                 dotsEaten = new Set(tileSteps)
                 // console.log(dotsEaten)
