@@ -152,7 +152,7 @@ function winCheck(){
                     clearInterval(clock)
                     scoreNum += showTimer
                     document.getElementById("score").innerText = `Score: ${scoreNum}`
-                    document.getElementById("big-message").innerText = "You Won!!!!!"
+                    document.getElementById("big-message").innerText = "You Won!"
                     newHS()
 
 
