@@ -5,7 +5,7 @@ For my first GA project I want to make a pac-man style game where the player has
 To make this work I imagine that I would need to make a very large grid with each tile numbered and tell the character that it can only move if the letter matches or if the number matches. and remove the barries from this list of movement options. All the available areas of movement will have a token on them, and when the character moves over them +1 will be added to a list, and the space will be updated and removed from the token list.
 
 
-![gridLayout](https://user-images.githubusercontent.com/63885329/118316351-9361ce80-b4ab-11eb-8847-2187e01d4130.jpg)
+![image](https://user-images.githubusercontent.com/63885329/119174605-a5002480-ba1d-11eb-84e9-a84d046bbccf.png)
 
 
 
@@ -24,19 +24,16 @@ __MVP:__
 
 __Stretch Goals:__
 
--AI enemies (that can move through obstacles?)
+-AI enemies
 
 -Powerups
 
 -Multiple levels, that get harder.
 
--Randomized levels
-
--Styling for blurred lines of movement
-
 -High scores
 
--Waves of fog moving across board to blur vision
+-Visual blocking?
+
 
 
 
