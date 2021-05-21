@@ -32,7 +32,7 @@ __Stretch Goals:__
 
 -High scores
 
--Visual blocking?
+
 
 
 
