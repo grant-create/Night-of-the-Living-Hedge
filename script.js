@@ -50,7 +50,7 @@ window.addEventListener("DOMContentLoaded", () =>{
 
 function winCheck(){
     if (dotsEaten.size==140){
-        console.log(dotsEaten.size)
+        // console.log(dotsEaten.size)
         gameOver = true
         document.getElementById("big-message").innerText = "You Won!"
         newHS()
@@ -147,7 +147,7 @@ function winCheck(){
 
                 //after 30 seconds bonus items start to appear every 10 seconds
 
-                if(showTimer%10 == 0 && showTimer<60){
+                if(showTimer%10 == 0 && showTimer<=60){
                     
                     bonusItem()
                     
@@ -207,8 +207,8 @@ function winCheck(){
 
 
     
-        console.log(gameOver)
-        // if(gameOver == false){
+        
+        
 
 
         // arrow key functions:
@@ -218,7 +218,7 @@ function winCheck(){
             event.preventDefault();
             //clear the old spot
             heroMove.innerText = ""
-            console.log(gameOver)
+            
             //log move count
             playerMoves ++
             // console.log(playerMoves)
